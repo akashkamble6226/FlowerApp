@@ -1,13 +1,29 @@
 import 'package:flower/constants/color_constants.dart';
+import 'package:flower/widgets/chips.dart';
+
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final List _labels = [
+    'Single',
+    'Bouquets',
+    'Seasons',
+  ];
+
+  final List<bool> _selected = [false, false, false];
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width * 0.7;
+    int? _value = 0;
     return Scaffold(
       backgroundColor: Clrs.white,
       body: SafeArea(
@@ -50,12 +66,14 @@ class HomePage extends StatelessWidget {
                       width: width,
                       child: const TextField(
                         decoration: InputDecoration(
-                          
                           prefixIcon: Padding(
-                            padding: EdgeInsets.only(left: 15,right: 10),
-                            child: Icon(Icons.search,size: 35,),
+                            padding: EdgeInsets.only(left: 15, right: 10),
+                            child: Icon(
+                              Icons.search,
+                              size: 35,
+                            ),
                           ),
-                          
+
                           // icon: Icon(),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(
@@ -81,10 +99,15 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
+
+              const ChoiceChipList(),
+            
             ],
           ),
         ),
       ),
     );
   }
+
+  
 }
