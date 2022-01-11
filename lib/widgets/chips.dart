@@ -18,7 +18,17 @@ class _ChoiceChipListState extends State<ChoiceChipList> {
 
   @override
   Widget build(BuildContext context) {
-    return buildChoiceChips();
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10),
+        child: Row(
+          children: [
+            buildChoiceChips(),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget buildChoiceChips() => Wrap(
@@ -27,14 +37,16 @@ class _ChoiceChipListState extends State<ChoiceChipList> {
         children: choiceChips
             .map((choiceChip) => ChoiceChip(
                   label: Text(choiceChip.label),
-                  labelPadding: const EdgeInsets.only(left:25,right:25,top: 5,bottom: 5),
+                  labelPadding: const EdgeInsets.only(
+                      left: 26, right: 26, top: 8, bottom: 8),
                   shape: const RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.grey, width:1),
                       borderRadius: BorderRadius.all(
-                          Radius.circular(12),
-                          
-                          )),
-                  labelStyle: const TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.white),
+                    Radius.circular(12),
+                  )),
+                  labelStyle: TextStyle(
+                    fontSize: 16,
+                      fontWeight: FontWeight.bold, color:choiceChip.isSelected ?Colors.white:Colors.grey),
                   onSelected: (isSelected) => setState(() {
                     choiceChips = choiceChips.map((otherChip) {
                       final newChip = otherChip.copy(isSelected: false);
@@ -46,7 +58,8 @@ class _ChoiceChipListState extends State<ChoiceChipList> {
                   }),
                   selected: choiceChip.isSelected,
                   selectedColor: Colors.black,
-                  backgroundColor: Colors.grey,
+                  backgroundColor:Colors.transparent,
+                  // selectedShadowColor: Colors.orange,
                   
                 ))
             .toList(),

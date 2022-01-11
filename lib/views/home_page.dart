@@ -1,8 +1,11 @@
 import 'package:flower/constants/color_constants.dart';
+import 'package:flower/models/flower_dummydata.dart';
 import 'package:flower/widgets/chips.dart';
+import 'package:flower/widgets/flower_list.dart';
 
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,18 +15,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List _labels = [
-    'Single',
-    'Bouquets',
-    'Seasons',
-  ];
-
-  final List<bool> _selected = [false, false, false];
-
+ 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width * 0.7;
-    int? _value = 0;
+    
     return Scaffold(
       backgroundColor: Clrs.white,
       body: SafeArea(
@@ -99,8 +95,10 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-
+              const SizedBox(height: 20,),
               const ChoiceChipList(),
+              const FlowerView(),
+             
             
             ],
           ),
