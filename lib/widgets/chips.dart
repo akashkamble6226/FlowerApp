@@ -36,6 +36,7 @@ class _ChoiceChipListState extends State<ChoiceChipList> {
         spacing: spacing,
         children: choiceChips
             .map((choiceChip) => ChoiceChip(
+            
                   label: Text(choiceChip.label),
                   labelPadding: const EdgeInsets.only(
                       left: 26, right: 26, top: 8, bottom: 8),
@@ -69,6 +70,7 @@ class _ChoiceChipListState extends State<ChoiceChipList> {
 class ChoiceChips {
   static final all = <ChoiceChipData>[
     ChoiceChipData(
+      
       label: 'Single',
       isSelected: false,
       selectedColor: Clrs.black,
